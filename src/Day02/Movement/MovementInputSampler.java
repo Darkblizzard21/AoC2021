@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
-public class InputSampler {
+public class MovementInputSampler {
     public List<Tuple<InputType, Integer>> SampleInput() {
         URL url = getClass().getResource("input.txt");
         assert url != null;
