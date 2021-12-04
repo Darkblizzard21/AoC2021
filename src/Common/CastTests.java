@@ -1,4 +1,4 @@
-package General;
+package Common;
 
 public class CastTests {
     private CastTests(){}

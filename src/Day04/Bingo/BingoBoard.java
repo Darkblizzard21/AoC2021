@@ -1,6 +1,6 @@
 package Day04.Bingo;
 
-import General.Tuple;
+import Common.Tuple;
 
 import java.util.Arrays;
 

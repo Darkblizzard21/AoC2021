@@ -1,6 +1,6 @@
 package Day02.Movement;
 
-import General.Tuple;
+import Common.Tuple;
 
 import java.util.List;
 

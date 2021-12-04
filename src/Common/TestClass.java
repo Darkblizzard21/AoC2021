@@ -1,4 +1,4 @@
-package General;
+package Common;
 
 import Day01.DepthMeasurement.DepthSampler;
 import Day02.Movement.MovementController;

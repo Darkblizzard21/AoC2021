@@ -1,4 +1,4 @@
-package General;
+package Common;
 
 public class Tuple<X, Y> {
     public final X x;
