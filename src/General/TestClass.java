@@ -4,10 +4,11 @@ import Day01.DepthMeasurement.DepthSampler;
 import Day02.Movement.MovementController;
 import Day02.Movement.MovementInputSampler;
 import Day03.PowerConsumtion.RateCalculator;
+import Day04.Bingo.BingoSolver;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 3;
+        int day = 4;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -33,6 +34,13 @@ public class TestClass {
                 int oxygen = rateCalculator.calculateOxygenRating(input);
                 int co2 = rateCalculator.calculateCO2Rating(input);
                 System.out.println("Oxygen: " + oxygen + " CO2: " + co2 + " oxygen generator rating: " + oxygen * co2);
+                break;
+            case 4:
+                BingoSolver bs = new BingoSolver();
+                int score = bs.SolveBingo();
+                System.out.println("Winning Score: " + score);
+                int scoreL = bs.SolveBingo_FindLooser();
+                System.out.println("Loosing Score: " + scoreL);
                 break;
         }
     }

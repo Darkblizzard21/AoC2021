@@ -1,5 +1,7 @@
 package Day02.Movement;
 
+import General.Tuple;
+
 import java.util.List;
 
 public class MovementController {
