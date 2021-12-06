@@ -1,5 +1,4 @@
-package Common;
-
+import Common.CastTests;
 import Day01.DepthMeasurement.DepthSampler;
 import Day02.Movement.MovementController;
 import Day02.Movement.MovementInputSampler;
