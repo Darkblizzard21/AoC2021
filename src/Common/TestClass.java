@@ -5,12 +5,12 @@ import Day02.Movement.MovementController;
 import Day02.Movement.MovementInputSampler;
 import Day03.PowerConsumtion.RateCalculator;
 import Day04.Bingo.BingoSolver;
-import Day05.HydrothermalVenture.Line;
 import Day05.HydrothermalVenture.LinePlotter;
+import Day06.Lanternfish.FishGrowthCalculator;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 5;
+        int day = 6;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -45,16 +45,18 @@ public class TestClass {
                 System.out.println("Loosing Score: " + scoreL);
                 break;
             case 5:
-                Line testL = Line.fromString("980,926 -> 73,19");
-                var diff = testL.x1 - testL.x2;
-                var textPoints = testL.GetCoverPoints();
-
                 LinePlotter lp = new LinePlotter();
                 long crossings = lp.findNumberOfCrossings();
                 System.out.println("Crossings with of at least 2 lines (excluding Diagonal): " + crossings);
                 long allCrossings = lp.findNumberOfCrossings_IncDiagonals();
                 System.out.println("Crossings with of at least 2 lines: " + allCrossings);
                 break;
+            case 6:
+                FishGrowthCalculator fgc = new FishGrowthCalculator();
+                long fs18 = fgc.countFishAfterDay(18);
+                long fs80 = fgc.countFishAfterDay(80);
+                long fs256 = fgc.countFishAfterDay(256);
+                System.out.println("Count day018: " + fs18 + "\nCount day080: " + fs80+ "\nCount day256: " + fs256);
         }
     }
 }
