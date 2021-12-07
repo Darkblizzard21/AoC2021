@@ -60,11 +60,8 @@ public class TestClass {
                 break;
             case 7:
                 CrabAligner crabAligner = new CrabAligner();
-                var median = crabAligner.CrabAlignCost_Median();
-                var average = crabAligner.CrabAlignCost_Average();
-                System.out.println("Median: " + median
-                        + "\nAverage: " + average
-                        + "\nBrute Force: " + crabAligner.CrabAlignCost_BruteForce(average.x));
+                System.out.println("Median: " + crabAligner.CrabAlignCost_Median()
+                        + "\nAverage: " + crabAligner.CrabAlignCost_Average());
                 break;
         }
     }

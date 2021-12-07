@@ -15,7 +15,7 @@ public class CrabAligner {
     private static final boolean loadExample = false;
 
     public Tuple<Integer, Long> CrabAlignCost_Median() {
-        var median = loadInput().sorted().collect(Collectors.collectingAndThen(
+        final var median = loadInput().sorted().collect(Collectors.collectingAndThen(
                 Collectors.toList(),
                 ages -> {
                     int count = ages.size();
@@ -28,35 +28,15 @@ public class CrabAligner {
         return new Tuple<>(median, loadInput().mapToLong(i -> Math.abs(i - median)).sum());
     }
 
-    public Tuple<Integer, Long> CrabAlignCost_BruteForce(int mid){
-        return CrabAlignCost_BruteForce(mid, 0.4);
-    }
-    public Tuple<Integer, Long> CrabAlignCost_BruteForce(int mid, double range) {
-        Tuple<Integer, Long> best = new Tuple<>(-1, Long.MAX_VALUE);
-        for (int i = (int) (mid*(1-range/2)); i < (mid*(1+range/2))+1; i++) {
-            var c = CrabAlignCost_Average(i);
-            if (c.y < best.y) {
-                best = c;
-            }
-        }
-        return best;
-    }
-
     public Tuple<Integer, Long> CrabAlignCost_Average() {
-        return CrabAlignCost_Average(-1);
-    }
+        final var t = loadInput().collect(Collectors.toList());
+        final double s = t.size();
+        final double averageD = t.stream().mapToInt(i -> i).sum() / s;
+        final int average = t.stream().filter(i -> i < averageD).count() < s / 2 ? (int) averageD : (int) averageD + 1;
 
-    private Tuple<Integer, Long> CrabAlignCost_Average(int average) {
-        if (average < 0) {
-            var t = loadInput().collect(Collectors.toList());
-            double s = t.size();
-            double averageD = t.stream().mapToInt(i -> i).sum() / s;
-            average = t.stream().filter(i->i<averageD).count() < s/2 ? (int) averageD : (int) averageD +1;
-        }
-        int finalAverage = average;
         return new Tuple<>(
                 average,
-                loadInput().mapToLong(i -> Math.abs(i - finalAverage)).map(i -> (i * i + i) / 2).sum());
+                loadInput().mapToLong(i -> Math.abs(i - average)).map(i -> (i * i + i) / 2).sum());
     }
 
 
