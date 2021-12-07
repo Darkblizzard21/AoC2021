@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LinePlotter {
-    private List<Line> lines;
-    private Map<Tuple<Integer, Integer>, Integer> map;
-
     public long findNumberOfCrossings() {
         return loadInput()
                 .filter(l -> l.x1 == l.x2 || l.y1 == l.y2)

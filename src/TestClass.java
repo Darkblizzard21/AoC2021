@@ -6,10 +6,11 @@ import Day03.PowerConsumtion.RateCalculator;
 import Day04.Bingo.BingoSolver;
 import Day05.HydrothermalVenture.LinePlotter;
 import Day06.Lanternfish.FishGrowthCalculator;
+import Day07.CrabAlignment.CrabAligner;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 6;
+        int day = 7;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -55,7 +56,16 @@ public class TestClass {
                 long fs18 = fgc.countFishAfterDay(18);
                 long fs80 = fgc.countFishAfterDay(80);
                 long fs256 = fgc.countFishAfterDay(256);
-                System.out.println("Count day018: " + fs18 + "\nCount day080: " + fs80+ "\nCount day256: " + fs256);
+                System.out.println("Count day018: " + fs18 + "\nCount day080: " + fs80 + "\nCount day256: " + fs256);
+                break;
+            case 7:
+                CrabAligner crabAligner = new CrabAligner();
+                var median = crabAligner.CrabAlignCost_Median();
+                var average = crabAligner.CrabAlignCost_Average();
+                System.out.println("Median: " + median
+                        + "\nAverage: " + average
+                        + "\nBrute Force: " + crabAligner.CrabAlignCost_BruteForce(average.x));
+                break;
         }
     }
 }

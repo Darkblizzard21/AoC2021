@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class FishSchool {
-    private long[] fish;
+    private final long[] fish;
     private int currentDay = 0;
 
     public FishSchool(Map<Integer,Long> fishState) {
