@@ -7,10 +7,12 @@ import Day04.Bingo.BingoSolver;
 import Day05.HydrothermalVenture.LinePlotter;
 import Day06.Lanternfish.FishGrowthCalculator;
 import Day07.CrabAlignment.CrabAligner;
+import Day08.SevenSegmentSearch.EncryptionSolver;
+import Day08.SevenSegmentSearch.NumberCounter;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 7;
+        int day = 8;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -62,6 +64,27 @@ public class TestClass {
                 CrabAligner crabAligner = new CrabAligner();
                 System.out.println("Median: " + crabAligner.CrabAlignCost_Median()
                         + "\nAverage: " + crabAligner.CrabAlignCost_Average());
+                break;
+            case 8:
+                // Part 1
+                NumberCounter counter = new NumberCounter();
+                System.out.println(counter.count1478());
+                // Part 2
+                EncryptionSolver solver = new EncryptionSolver();
+                // Test Identical
+                var identical = EncryptionSolver.decrypt(new String[]{
+                        "abcefg", "cf", "acdeg", "acdfg", "bcdf", "abdfg", "abdefg", "acf", "abcdefg", "abcdfg"
+                });
+                // Test Example
+                var example =  EncryptionSolver.decrypt(new String[]{
+                        "acedgfb", "cdfbe", "gcdfa", "fbcad", "dab", "cefabd", "cdfgeb", "eafb", "cagedb", "ab"
+                });
+                System.out.println(""+EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb",example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("fcadb",example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb",example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdbaf",example)));
+                // Solve Problem
+                System.out.println(solver.Solve());
                 break;
         }
     }
