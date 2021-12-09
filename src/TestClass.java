@@ -9,10 +9,11 @@ import Day06.Lanternfish.FishGrowthCalculator;
 import Day07.CrabAlignment.CrabAligner;
 import Day08.SevenSegmentSearch.EncryptionSolver;
 import Day08.SevenSegmentSearch.NumberCounter;
+import Day09.LavaTubes.SmokeMapScanner;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 8;
+        int day = 9;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -85,6 +86,13 @@ public class TestClass {
                         + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdbaf",example)));
                 // Solve Problem
                 System.out.println(solver.Solve());
+                break;
+            case 9:
+                SmokeMapScanner sms = new SmokeMapScanner();
+                System.out.println("LowPoint Score: " + sms.findLowPointScore());
+                var basins = sms.findBasinScore();
+                System.out.println("Baisns: " + basins);
+                sms.debugPrintBasin_Singles();
                 break;
         }
     }
