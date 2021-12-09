@@ -10,6 +10,7 @@ import Day07.CrabAlignment.CrabAligner;
 import Day08.SevenSegmentSearch.EncryptionSolver;
 import Day08.SevenSegmentSearch.NumberCounter;
 import Day09.LavaTubes.SmokeMapScanner;
+import Day09.LavaTubes.SmokeMapScanner_WithDebug;
 
 public class TestClass {
     public static void main(String[] args) {
@@ -88,11 +89,12 @@ public class TestClass {
                 System.out.println(solver.Solve());
                 break;
             case 9:
-                SmokeMapScanner sms = new SmokeMapScanner();
-                System.out.println("LowPoint Score: " + sms.findLowPointScore());
+                SmokeMapScanner_WithDebug sms = new SmokeMapScanner_WithDebug();
+                sms.debugPrintBasin_Map();
+                sms.debugPrintBasin_Singles();
+                System.out.println("\nLowPoint Score: " + sms.findLowPointScore());
                 var basins = sms.findBasinScore();
                 System.out.println("Baisns: " + basins);
-                sms.debugPrintBasin_Singles();
                 break;
         }
     }
