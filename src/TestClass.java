@@ -11,10 +11,11 @@ import Day08.SevenSegmentSearch.EncryptionSolver;
 import Day08.SevenSegmentSearch.NumberCounter;
 import Day09.LavaTubes.SmokeMapScanner;
 import Day09.LavaTubes.SmokeMapScanner_WithDebug;
+import Day10.SyntaxScoring.SyntaxChecker;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 9;
+        int day = 10;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -95,6 +96,11 @@ public class TestClass {
                 System.out.println("\nLowPoint Score: " + sms.findLowPointScore());
                 var basins = sms.findBasinScore();
                 System.out.println("Baisns: " + basins);
+                break;
+            case 10:
+                SyntaxChecker sc = new SyntaxChecker();
+                System.out.println("Corruption Score: " +sc.getCorruptionScore());
+                System.out.println("Completion Score: " +sc.getCompletionScore());
                 break;
         }
     }
