@@ -1,7 +1,8 @@
 package Common;
 
 public class CastTests {
-    private CastTests(){}
+    private CastTests() {
+    }
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
