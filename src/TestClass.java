@@ -12,10 +12,12 @@ import Day08.SevenSegmentSearch.NumberCounter;
 import Day09.LavaTubes.SmokeMapScanner;
 import Day09.LavaTubes.SmokeMapScanner_WithDebug;
 import Day10.SyntaxScoring.SyntaxChecker;
+import Day11.OctopusDisco.FlashPredictor;
+import Day11.OctopusDisco.FlashPredictor_WithDebug;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 10;
+        int day = 11;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -101,6 +103,14 @@ public class TestClass {
                 SyntaxChecker sc = new SyntaxChecker();
                 System.out.println("Corruption Score: " +sc.getCorruptionScore());
                 System.out.println("Completion Score: " +sc.getCompletionScore());
+                break;
+            case 11:
+                FlashPredictor_WithDebug fp = new FlashPredictor_WithDebug();
+                int steps = 100;
+                fp.Flashes_PrintLastBoard(steps);
+                System.out.println("Flash Count: " + fp.Flashes(steps));
+
+                System.out.println("First Synced Flash: " + fp.FirstSyncedFlash());
                 break;
         }
     }
