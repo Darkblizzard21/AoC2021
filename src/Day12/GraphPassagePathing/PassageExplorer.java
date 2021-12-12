@@ -7,17 +7,12 @@ import java.util.HashSet;
 import static Common.Util.isStringLowerCase;
 
 public class PassageExplorer extends PassageExplorerInputProvider {
-    public int calculatePathCount() {
-        return calculatePathCount(0);
-    }
-
     public int calculatePathCount(int inputId) {
         return calculatePathCount(inputId, false);
     }
 
     public int calculatePathCount(int inputId, boolean allowVisitTwice) {
-        var in = load(inputId);
-        var startEndTuple = toGraph(in);
+        var startEndTuple = toGraph(load(inputId));
 
         return allowVisitTwice ?
                 exploreAllPaths_WithDoubleVisit(
