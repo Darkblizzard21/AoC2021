@@ -9,15 +9,14 @@ import Day06.Lanternfish.FishGrowthCalculator;
 import Day07.CrabAlignment.CrabAligner;
 import Day08.SevenSegmentSearch.EncryptionSolver;
 import Day08.SevenSegmentSearch.NumberCounter;
-import Day09.LavaTubes.SmokeMapScanner;
 import Day09.LavaTubes.SmokeMapScanner_WithDebug;
 import Day10.SyntaxScoring.SyntaxChecker;
-import Day11.OctopusDisco.FlashPredictor;
 import Day11.OctopusDisco.FlashPredictor_WithDebug;
+import Day12.GraphPassagePathing.PassageExplorer;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 11;
+        int day = 12;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -81,13 +80,13 @@ public class TestClass {
                         "abcefg", "cf", "acdeg", "acdfg", "bcdf", "abdfg", "abdefg", "acf", "abcdefg", "abcdfg"
                 });
                 // Test Example
-                var example =  EncryptionSolver.decrypt(new String[]{
+                var example = EncryptionSolver.decrypt(new String[]{
                         "acedgfb", "cdfbe", "gcdfa", "fbcad", "dab", "cefabd", "cdfgeb", "eafb", "cagedb", "ab"
                 });
-                System.out.println(""+EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb",example))
-                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("fcadb",example))
-                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb",example))
-                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdbaf",example)));
+                System.out.println("" + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb", example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("fcadb", example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdfeb", example))
+                        + EncryptionSolver.interpret(EncryptionSolver.decryptString("cdbaf", example)));
                 // Solve Problem
                 System.out.println(solver.Solve());
                 break;
@@ -101,8 +100,8 @@ public class TestClass {
                 break;
             case 10:
                 SyntaxChecker sc = new SyntaxChecker();
-                System.out.println("Corruption Score: " +sc.getCorruptionScore());
-                System.out.println("Completion Score: " +sc.getCompletionScore());
+                System.out.println("Corruption Score: " + sc.getCorruptionScore());
+                System.out.println("Completion Score: " + sc.getCompletionScore());
                 break;
             case 11:
                 FlashPredictor_WithDebug fp = new FlashPredictor_WithDebug();
@@ -111,6 +110,23 @@ public class TestClass {
                 System.out.println("Flash Count: " + fp.Flashes(steps));
 
                 System.out.println("First Synced Flash: " + fp.FirstSyncedFlash());
+                break;
+            case 12:
+                PassageExplorer pe = new PassageExplorer();
+
+                System.out.println("Number of paths for Example 1:\t" + pe.calculatePathCount(1) + " (==10)");
+                System.out.println("Number of paths for Example 2:\t" + pe.calculatePathCount(2) + " (==19)");
+                System.out.println("Number of paths for Example 3:\t" + pe.calculatePathCount(3) + " (==226)");
+                System.out.println("\nNumber of paths for Input:\t\t" + pe.calculatePathCount(0));
+
+                System.out.println("With doubleVisitAllowed:");
+                System.out.println("\nNumber of paths for Example 1:\t"
+                        + pe.calculatePathCount(1, true) + " (==36)");
+                System.out.println("Number of paths for Example 2:\t"
+                        + pe.calculatePathCount(2, true) + " (==103)");
+                System.out.println("Number of paths for Example 3:\t"
+                        + pe.calculatePathCount(3, true) + " (==3509)");
+                System.out.println("\nNumber of paths for Input:\t\t" + pe.calculatePathCount(0, true));
                 break;
         }
     }
