@@ -13,10 +13,14 @@ import Day09.LavaTubes.SmokeMapScanner_WithDebug;
 import Day10.SyntaxScoring.SyntaxChecker;
 import Day11.OctopusDisco.FlashPredictor_WithDebug;
 import Day12.GraphPassagePathing.PassageExplorer;
+import Day13.Origami.PaperFolder;
+import Day13.Origami.PaperFolder_WithDebug;
+
+import java.sql.SQLOutput;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 12;
+        int day = 13;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -127,6 +131,16 @@ public class TestClass {
                 System.out.println("Number of paths for Example 3:\t"
                         + pe.calculatePathCount(3, true) + " (==3509)");
                 System.out.println("\nNumber of paths for Input:\t\t" + pe.calculatePathCount(0, true));
+                break;
+            case 13:
+                PaperFolder pf_wd = new PaperFolder();
+                System.out.println("Points After 1. Fold (example): " + pf_wd.pointCountAfterFolds(true,1));
+                System.out.println("Points After 1. Fold (input): " + pf_wd.pointCountAfterFolds(false,1));
+
+                System.out.println("\nCode (example):");
+                PaperFolder_WithDebug.visualize(pf_wd.pointsAfterFolds(true));
+                System.out.println("Code (input):");
+                PaperFolder_WithDebug.visualize(pf_wd.pointsAfterFolds(false));
                 break;
         }
     }
