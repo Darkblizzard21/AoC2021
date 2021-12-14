@@ -15,12 +15,12 @@ import Day11.OctopusDisco.FlashPredictor_WithDebug;
 import Day12.GraphPassagePathing.PassageExplorer;
 import Day13.Origami.PaperFolder;
 import Day13.Origami.PaperFolder_WithDebug;
+import Day14.PolymerizationExtention.PolymerBuilder;
 
-import java.sql.SQLOutput;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 13;
+        int day = 14;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -141,6 +141,17 @@ public class TestClass {
                 PaperFolder_WithDebug.visualize(pf_wd.pointsAfterFolds(true));
                 System.out.println("Code (input):");
                 PaperFolder_WithDebug.visualize(pf_wd.pointsAfterFolds(false));
+                break;
+            case 14:
+                PolymerBuilder pb = new PolymerBuilder();
+                System.out.println("Part 1:\n");
+                System.out.println("Score (example): "+ pb.scoreAfterXSteps_Recursive(10,true));
+                System.out.println("Score (input): "+ pb.scoreAfterXSteps_Recursive(10));
+
+                System.out.println("\nPart 2:\n");
+                System.out.println("Score (example): "+ pb.scoreAfterXSteps_Recursive(40,true));
+                System.out.println("Starting To Calculate result for 40 steps recursive ... this may take awhile ...");
+                System.out.println("Score (input): "+ pb.scoreAfterXSteps_Recursive(40));
                 break;
         }
     }
