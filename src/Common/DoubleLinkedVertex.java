@@ -1,14 +1,20 @@
 package Common;
 
+import Day10.SyntaxScoring.SyntaxUtility;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class DoubleLinkedVertex<E> {
+    public static long nextId = 0;
+    private final long id;
     private final List<DoubleLinkedVertex<E>> neighbours;
     private final E content;
 
     public DoubleLinkedVertex(E content){
+        id = nextId++;
         this.content = content;
         neighbours = new LinkedList<>();
     }
@@ -39,11 +45,13 @@ public class DoubleLinkedVertex<E> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DoubleLinkedVertex<?> that = (DoubleLinkedVertex<?>) o;
-        return Objects.equals(neighbours, that.neighbours) && Objects.equals(content, that.content);
+        var res = id == that.id;
+        assert !res || Objects.equals(content, that.content);
+        return res;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(neighbours, content);
+        return Objects.hash(content, neighbours.stream().map(x->x.id).collect(Collectors.toList()));
     }
 }

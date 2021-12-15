@@ -16,11 +16,12 @@ import Day12.GraphPassagePathing.PassageExplorer;
 import Day13.Origami.PaperFolder;
 import Day13.Origami.PaperFolder_WithDebug;
 import Day14.PolymerizationExtention.PolymerBuilder;
+import Day15.ShellPathfinder.Pathfinder;
 
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 14;
+        int day = 15;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -151,7 +152,18 @@ public class TestClass {
                 System.out.println("\nPart 2:\n");
                 System.out.println("Score (example): "+ pb.scoreAfterXSteps_Recursive(40,true));
                 System.out.println("Starting To Calculate result for 40 steps recursive ... this may take awhile ...");
+                long startTime = System.nanoTime();
                 System.out.println("Score (input): "+ pb.scoreAfterXSteps_Recursive(40));
+                long stopTime = System.nanoTime();
+                System.out.println("Time Neede: " + (stopTime-startTime)/1000000000d + "s");
+                break;
+            case 15:
+                Pathfinder pf = new Pathfinder();
+                System.out.println("Lowest Risk Total (example): " + pf.minimalPathRisk(true));
+                System.out.println("Lowest Risk Total (input): " + pf.minimalPathRisk(false));
+
+                System.out.println("Lowest Risk Total 5 (example): " + pf.minimalPathRisk5(true));
+                System.out.println("Lowest Risk Total 5 (input): " + pf.minimalPathRisk5(false));
                 break;
         }
     }
