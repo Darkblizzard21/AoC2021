@@ -1,7 +1,5 @@
 package Common;
 
-import Day10.SyntaxScoring.SyntaxUtility;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;

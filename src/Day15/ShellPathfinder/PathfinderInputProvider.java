@@ -48,8 +48,10 @@ public class PathfinderInputProvider {
             var l = vertices.length;
             var ll = vertices[l - 1].length;
 
+            for (int i = 0; i < vertices[l - 1].length-1; i++) {
+                vertices[l-1][i].addNeighbour(vertices[l-1][i+1]);
+            }
             vertices[l-1][ll-1].addNeighbour(vertices[l-2][ll-1]);
-            vertices[l-1][ll-1].addNeighbour(vertices[l-1][ll-2]);
 
             return new Tuple<>(vertices[0][0], vertices[l - 1][ll-1]);
         } catch (IOException | ClassCastException e) {
