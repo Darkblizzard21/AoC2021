@@ -14,7 +14,7 @@ public class BitQueue {
     }
 
     public int getNext(int numbers) {
-        if (numbers > 64 || numbers < 1) throw new IllegalArgumentException();
+        if (numbers > 32 || numbers < 1) throw new IllegalArgumentException();
         int res = 0;
         for (int i = numbers - 1; i >= 0; i--) {
             if (isEmpty()) throw new NoSuchElementException();
