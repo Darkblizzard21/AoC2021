@@ -17,7 +17,7 @@ public class PackageParserInputProvider {
         } else {
             toLoad = "input.txt";
         }
-        URL url = getClass().getResource(toLoad);
+        URL url = getClass().getResource("input/"+toLoad);
         assert url != null;
         return load(url);
     }
