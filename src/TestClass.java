@@ -17,11 +17,12 @@ import Day13.Origami.PaperFolder;
 import Day13.Origami.PaperFolder_WithDebug;
 import Day14.PolymerizationExtention.PolymerBuilder;
 import Day15.ShellPathfinder.Pathfinder;
+import Day16.ElvesMessageDecoder.PackageParser;
 
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 15;
+        int day = 16;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -164,6 +165,30 @@ public class TestClass {
 
                 System.out.println("Lowest Risk Total 5 (example): " + pf.minimalPathRisk5(true));
                 System.out.println("Lowest Risk Total 5 (input): " + pf.minimalPathRisk5(false));
+                break;
+            case 16:
+                PackageParser pp = new PackageParser();
+                System.out.println("Task1: VersionSums:\n");
+                System.out.println("Example 4 VersionSum: " + pp.sumOfVersions(4) + " == 16");
+                System.out.println("Example 5 VersionSum: " + pp.sumOfVersions(5) + " == 12");
+                System.out.println("Example 6 VersionSum: " + pp.sumOfVersions(6) + " == 23");
+                System.out.println("Example 7 VersionSum: " + pp.sumOfVersions(7) + " == 31");
+
+                System.out.println("\nInput VersionSum: " + pp.sumOfVersions(0));
+
+                System.out.println("\nTask2: Packet Evaluation:\n");
+                System.out.println("Example  8 Evaluated: " + pp.loadPacket(8).literalValue() + " == 3");
+                System.out.println("Example  9 Evaluated: " + pp.loadPacket(9).literalValue() + " == 54");
+                System.out.println("Example 10 Evaluated: " + pp.loadPacket(10).literalValue() + " == 7");
+                System.out.println("Example 11 Evaluated: " + pp.loadPacket(11).literalValue() + " == 9");
+                System.out.println("Example 12 Evaluated: " + pp.loadPacket(12).literalValue() + " == 1");
+                System.out.println("Example 13 Evaluated: " + pp.loadPacket(13).literalValue() + " == 0");
+                System.out.println("Example 14 Evaluated: " + pp.loadPacket(14).literalValue() + " == 0");
+                System.out.println("Example 15 Evaluated: " + pp.loadPacket(15).literalValue() + " == 1");
+
+                System.out.println("\nInput Evaluated: " + pp.loadPacket(0).literalValue());
+
+                System.out.println();
                 break;
         }
     }
