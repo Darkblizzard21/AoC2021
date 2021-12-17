@@ -18,11 +18,13 @@ import Day13.Origami.PaperFolder_WithDebug;
 import Day14.PolymerizationExtention.PolymerBuilder;
 import Day15.ShellPathfinder.Pathfinder;
 import Day16.ElvesMessageDecoder.PackageParser;
+import Day17.TargetTrickShots.ProbeLauncher;
+import Day17.TargetTrickShots.ProbeLauncher_WithDebug;
 
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 16;
+        int day = 17;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -136,8 +138,8 @@ public class TestClass {
                 break;
             case 13:
                 PaperFolder pf_wd = new PaperFolder();
-                System.out.println("Points After 1. Fold (example): " + pf_wd.pointCountAfterFolds(true,1));
-                System.out.println("Points After 1. Fold (input): " + pf_wd.pointCountAfterFolds(false,1));
+                System.out.println("Points After 1. Fold (example): " + pf_wd.pointCountAfterFolds(true, 1));
+                System.out.println("Points After 1. Fold (input): " + pf_wd.pointCountAfterFolds(false, 1));
 
                 System.out.println("\nCode (example):");
                 PaperFolder_WithDebug.visualize(pf_wd.pointsAfterFolds(true));
@@ -147,16 +149,16 @@ public class TestClass {
             case 14:
                 PolymerBuilder pb = new PolymerBuilder();
                 System.out.println("Part 1:\n");
-                System.out.println("Score (example): "+ pb.scoreAfterXSteps_Recursive(10,true));
-                System.out.println("Score (input): "+ pb.scoreAfterXSteps_Recursive(10));
+                System.out.println("Score (example): " + pb.scoreAfterXSteps_Recursive(10, true));
+                System.out.println("Score (input): " + pb.scoreAfterXSteps_Recursive(10));
 
                 System.out.println("\nPart 2:\n");
-                System.out.println("Score (example): "+ pb.scoreAfterXSteps_Recursive(40,true));
+                System.out.println("Score (example): " + pb.scoreAfterXSteps_Recursive(40, true));
                 System.out.println("Starting To Calculate result for 40 steps recursive ... this may take awhile ...");
                 long startTime = System.nanoTime();
-                System.out.println("Score (input): "+ pb.scoreAfterXSteps_Recursive(40));
+                System.out.println("Score (input): " + pb.scoreAfterXSteps_Recursive(40));
                 long stopTime = System.nanoTime();
-                System.out.println("Time Neede: " + (stopTime-startTime)/1000000000d + "s");
+                System.out.println("Time Neede: " + (stopTime - startTime) / 1000000000d + "s");
                 break;
             case 15:
                 Pathfinder pf = new Pathfinder();
@@ -189,6 +191,14 @@ public class TestClass {
                 System.out.println("\nInput Evaluated: " + pp.loadPacket(0).literalValue());
 
                 System.out.println();
+                break;
+            case 17:
+                ProbeLauncher pl = new ProbeLauncher();
+                System.out.println("Highest Y (example): " + pl.highestY(1) + " == 45");
+                System.out.println("Highest Y (input): " + pl.highestY(0));
+
+                System.out.println("Options (example): " + pl.numberOfOptions(1) + " == 112");
+                System.out.println("Options (input): " + pl.numberOfOptions(0));
                 break;
         }
     }
