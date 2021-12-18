@@ -19,12 +19,14 @@ import Day14.PolymerizationExtention.PolymerBuilder;
 import Day15.ShellPathfinder.Pathfinder;
 import Day16.ElvesMessageDecoder.PackageParser;
 import Day17.TargetTrickShots.ProbeLauncher;
-import Day17.TargetTrickShots.ProbeLauncher_WithDebug;
+import Day18.SnailHomework.SnailNumber;
+import Day18.SnailHomework.SnailNumberCalculator;
+import Day18.SnailHomework.SnailNumberCalculatorInputProvider;
 
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 17;
+        int day = 18;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -199,6 +201,19 @@ public class TestClass {
 
                 System.out.println("Options (example): " + pl.numberOfOptions(1) + " == 112");
                 System.out.println("Options (input): " + pl.numberOfOptions(0));
+                break;
+            case 18:
+                SnailNumberCalculator snc = new SnailNumberCalculator();
+                var snailExample1 = snc.addSnailNumbers(1);
+                System.out.println("\nFist Part:\n");
+                System.out.println("Magnitude (example1): " + snailExample1.magnitude() + "==3488");
+                var snailExample2 = snc.addSnailNumbers(2);
+                System.out.println("Magnitude (example2): " + snailExample2.magnitude() + "==4140");
+                System.out.println("Magnitude (input): " + snc.addSnailNumbers(20).magnitude());
+
+                System.out.println("\nSecond Part:\n");
+                System.out.println("BestMag: (example2) " + snc.getHighestDualComboMag(2) + "==3993");
+                System.out.println("BestMag: (input) " + snc.getHighestDualComboMag(0) );
                 break;
         }
     }
