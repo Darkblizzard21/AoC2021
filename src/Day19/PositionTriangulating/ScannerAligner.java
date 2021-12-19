@@ -1,17 +1,17 @@
 package Day19.PositionTriangulating;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class ScannerAligner extends ScannerAlignerInputProvider {
+    private final Map<Integer, List<Scanner>> cache = new HashMap<>();
+
     public long getNumberOfBeacons(int loadID) {
-        return alignToFirst(load(loadID)).stream().map(Scanner::getAlignedBeacons).flatMap(Collection::stream).distinct().count();
+        return alignToFirstFromLoad(loadID).stream().map(Scanner::getAlignedBeacons).flatMap(Collection::stream).distinct().count();
     }
 
     public long biggestManhattansDistance(int loadID) {
-        var aligned = alignToFirst(load(loadID));
+        var aligned = alignToFirstFromLoad(loadID);
         return aligned.stream()
                 .map(scanner ->
                         aligned.stream()
@@ -21,9 +21,15 @@ public class ScannerAligner extends ScannerAlignerInputProvider {
                                 )
                 )
                 .flatMap(Stream::distinct)
-                .mapToLong(i->i)
+                .mapToLong(i -> i)
                 .max()
                 .getAsLong();
+    }
+
+    private List<Scanner> alignToFirstFromLoad(int loadID) {
+        if (!cache.containsKey(loadID))
+            cache.put(loadID, alignToFirst(load(loadID)));
+        return cache.get(loadID);
     }
 
     private List<Scanner> alignToFirst(List<Scanner> scanners) {
