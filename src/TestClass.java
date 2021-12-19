@@ -19,14 +19,12 @@ import Day14.PolymerizationExtention.PolymerBuilder;
 import Day15.ShellPathfinder.Pathfinder;
 import Day16.ElvesMessageDecoder.PackageParser;
 import Day17.TargetTrickShots.ProbeLauncher;
-import Day18.SnailHomework.SnailNumber;
 import Day18.SnailHomework.SnailNumberCalculator;
-import Day18.SnailHomework.SnailNumberCalculatorInputProvider;
-
+import Day19.PositionTriangulating.ScannerAligner;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 18;
+        int day = 19;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -214,6 +212,15 @@ public class TestClass {
                 System.out.println("\nSecond Part:\n");
                 System.out.println("BestMag: (example2) " + snc.getHighestDualComboMag(2) + "==3993");
                 System.out.println("BestMag: (input) " + snc.getHighestDualComboMag(0) );
+                break;
+            case 19:
+                ScannerAligner sa = new ScannerAligner();
+                System.out.println("\n" + sa.getNumberOfBeacons(1) +"==79");
+                System.out.println("\n" + sa.getNumberOfBeacons(0));
+
+
+                System.out.println("\nManhattans distance (example):" + sa.biggestManhattansDistance(1) +"==3621");
+                System.out.println("\nManhattans distance (input):" + sa.biggestManhattansDistance(0));
                 break;
         }
     }
