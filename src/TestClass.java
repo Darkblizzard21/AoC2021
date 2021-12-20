@@ -21,10 +21,12 @@ import Day16.ElvesMessageDecoder.PackageParser;
 import Day17.TargetTrickShots.ProbeLauncher;
 import Day18.SnailHomework.SnailNumberCalculator;
 import Day19.PositionTriangulating.ScannerAligner;
+import Day20.ImageGeneration.ImageEnhancer;
+import Day20.ImageGeneration.InfiniteImage;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 19;
+        int day = 20;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -218,9 +220,22 @@ public class TestClass {
                 System.out.println("\n" + sa.getNumberOfBeacons(1) +"==79");
                 System.out.println("\n" + sa.getNumberOfBeacons(0));
 
-
                 System.out.println("\nManhattans distance (example):" + sa.biggestManhattansDistance(1) +"==3621");
                 System.out.println("\nManhattans distance (input):" + sa.biggestManhattansDistance(0));
+                break;
+            case 20:
+                ImageEnhancer ie = new ImageEnhancer();
+                System.out.println("Task 1:");
+                InfiniteImage iiExample = ie.getImage(1,2);
+                System.out.println("Count2 (example): " + iiExample.countValues() + "==34");
+                InfiniteImage iiInput = ie.getImage(0,2);
+                System.out.println("Count2 (input): " + iiInput.countValues());
+
+                System.out.println("\nTask 2:");
+                InfiniteImage iiExample50 = ie.getImage(1,50);
+                System.out.println("Count50 (example): " + iiExample50.countValues() + "==3351");
+                InfiniteImage iiInput50 = ie.getImage(0,50);
+                System.out.println("Count50 (input): " + iiInput50.countValues());
                 break;
         }
     }
