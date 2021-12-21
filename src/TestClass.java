@@ -23,10 +23,12 @@ import Day18.SnailHomework.SnailNumberCalculator;
 import Day19.PositionTriangulating.ScannerAligner;
 import Day20.ImageGeneration.ImageEnhancer;
 import Day20.ImageGeneration.InfiniteImage;
+import Day21.DiracDice.Dice.Dice100;
+import Day21.DiracDice.GameSimulator;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 20;
+        int day = 21;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -213,29 +215,37 @@ public class TestClass {
 
                 System.out.println("\nSecond Part:\n");
                 System.out.println("BestMag: (example2) " + snc.getHighestDualComboMag(2) + "==3993");
-                System.out.println("BestMag: (input) " + snc.getHighestDualComboMag(0) );
+                System.out.println("BestMag: (input) " + snc.getHighestDualComboMag(0));
                 break;
             case 19:
                 ScannerAligner sa = new ScannerAligner();
-                System.out.println("\n" + sa.getNumberOfBeacons(1) +"==79");
+                System.out.println("\n" + sa.getNumberOfBeacons(1) + "==79");
                 System.out.println("\n" + sa.getNumberOfBeacons(0));
 
-                System.out.println("\nManhattans distance (example):" + sa.biggestManhattansDistance(1) +"==3621");
+                System.out.println("\nManhattans distance (example):" + sa.biggestManhattansDistance(1) + "==3621");
                 System.out.println("\nManhattans distance (input):" + sa.biggestManhattansDistance(0));
                 break;
             case 20:
                 ImageEnhancer ie = new ImageEnhancer();
                 System.out.println("Task 1:");
-                InfiniteImage iiExample = ie.getImage(1,2);
+                InfiniteImage iiExample = ie.getImage(1, 2);
                 System.out.println("Count2 (example): " + iiExample.countValues() + "==34");
-                InfiniteImage iiInput = ie.getImage(0,2);
+                InfiniteImage iiInput = ie.getImage(0, 2);
                 System.out.println("Count2 (input): " + iiInput.countValues());
 
                 System.out.println("\nTask 2:");
-                InfiniteImage iiExample50 = ie.getImage(1,50);
+                InfiniteImage iiExample50 = ie.getImage(1, 50);
                 System.out.println("Count50 (example): " + iiExample50.countValues() + "==3351");
-                InfiniteImage iiInput50 = ie.getImage(0,50);
+                InfiniteImage iiInput50 = ie.getImage(0, 50);
                 System.out.println("Count50 (input): " + iiInput50.countValues());
+                break;
+            case 21:
+                GameSimulator gs = new GameSimulator();
+                System.out.println("Game Score (example): " + gs.getGameScore(1, new Dice100()));
+                System.out.println("Game Score (input): " + gs.getGameScore(0, new Dice100()));
+
+                System.out.println("\nQuantum Win Count (example): " + gs.getMostQuantumWins(1));
+                System.out.println("Quantum Win Count (input): " + gs.getMostQuantumWins(0));
                 break;
         }
     }

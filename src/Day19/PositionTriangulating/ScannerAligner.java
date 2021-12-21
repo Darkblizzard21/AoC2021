@@ -33,6 +33,7 @@ public class ScannerAligner extends ScannerAlignerInputProvider {
     }
 
     private List<Scanner> alignToFirst(List<Scanner> scanners) {
+        long timeSinceStart = System.nanoTime() / 1000;
         var scanner0 = scanners.remove(0);
 
         List<Scanner> in0Space = new LinkedList<>();
@@ -52,6 +53,8 @@ public class ScannerAligner extends ScannerAlignerInputProvider {
             }
             System.out.println("Aligned: " + in0Space.get(in0Space.size() - 1));
         }
+        long timeNo = System.nanoTime() / 1000;
+        System.out.println((timeNo-timeSinceStart)/1000000.d);
         return in0Space;
     }
 }
