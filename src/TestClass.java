@@ -241,10 +241,12 @@ public class TestClass {
                 break;
             case 21:
                 GameSimulator gs = new GameSimulator();
+                System.out.println("Part 1: D100");
                 System.out.println("Game Score (example): " + gs.getGameScore(1, new Dice100()));
                 System.out.println("Game Score (input): " + gs.getGameScore(0, new Dice100()));
 
-                System.out.println("\nQuantum Win Count (example): " + gs.getMostQuantumWins(1));
+                System.out.println("\nPart 2: QD3");
+                System.out.println("Quantum Win Count (example): " + gs.getMostQuantumWins(1));
                 System.out.println("Quantum Win Count (input): " + gs.getMostQuantumWins(0));
                 break;
         }

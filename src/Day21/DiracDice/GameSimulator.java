@@ -45,6 +45,7 @@ public class GameSimulator extends GameSimulatorInputProvider {
         if (players.length != 2)
             System.out.println("Length not as expected: Player Count: " + players.length);
         var result = winsPlayer(0,players[0],0,players[1],true);
+        System.out.println("Quantum P1 Win Percent: "+ result.x /(0.d+result.x+result.y) * 100 +"%");
         return result.x > result.y ? result.x : result.y;
     }
 
