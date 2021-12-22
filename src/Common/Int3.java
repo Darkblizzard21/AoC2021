@@ -53,6 +53,18 @@ public class Int3 {
         xyz[2] = z;
     }
 
+    public Int3 withX(int x) {
+        return new Int3(x,xyz[1],xyz[2]);
+    }
+
+    public Int3 withY(int y) {
+        return new Int3(xyz[0],y,xyz[2]);
+    }
+
+    public Int3 withZ(int z) {
+        return new Int3(xyz[0],xyz[1],z);
+    }
+
     public Int3 add(Int3 o) {
         return new Int3(x() + o.x(), y() + o.y(), z() + o.z());
     }

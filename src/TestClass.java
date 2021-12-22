@@ -25,10 +25,11 @@ import Day20.ImageGeneration.ImageEnhancer;
 import Day20.ImageGeneration.InfiniteImage;
 import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
+import Day22.CuboidReactor.ReactorRepairer;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 21;
+        int day = 22;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -248,6 +249,17 @@ public class TestClass {
                 System.out.println("\nPart 2: QD3");
                 System.out.println("Quantum Win Count (example): " + gs.getMostQuantumWins(1));
                 System.out.println("Quantum Win Count (input): " + gs.getMostQuantumWins(0));
+                break;
+            case 22:
+                ReactorRepairer rr = new ReactorRepairer();
+                System.out.println("Part 1: in50");
+                System.out.println("LightCount (example1): " + rr.getLightCount(1,50) + "==39");
+                System.out.println("LightCount (example2): " + rr.getLightCount(2,50) + "==590784");
+                System.out.println("LightCount (input): " + rr.getLightCount(0,50));
+
+                System.out.println("\nPart 2: unbound");
+                System.out.println("LightCount (example1): " + rr.getLightCountMultiThreadedBruteForce(1) + "==39");
+                System.out.println("LightCount (input): " + rr.getLightCountMultiThreadedBruteForce(0));
                 break;
         }
     }
