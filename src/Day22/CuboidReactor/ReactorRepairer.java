@@ -1,19 +1,18 @@
 package Day22.CuboidReactor;
 
-import Common.F_Rectangle3D;
 import Common.Int3;
 import Common.Rectangle3D;
 import Common.Tuple;
 import Day22.CuboidReactor.BitArrays.BitArray3D;
 import Day22.CuboidReactor.BitArrays.BitRectangle3D;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ReactorRepairer extends ReactorRepairerInputProvider {
     public static final long MAX_MEMORY_MB = (1 << 9);
@@ -23,27 +22,21 @@ public class ReactorRepairer extends ReactorRepairerInputProvider {
     }
 
     public long getLightCount(int loadId) {
-        var input = load(loadId).stream()
-                .map(t -> new Tuple<>(t.x, F_Rectangle3D.wrap(t.y)))
-                .collect(Collectors.toList());
-        List<F_Rectangle3D> wrappedSpace = new LinkedList<>();
+        var input = load(loadId).stream().map(Cube::map).collect(Collectors.toList());
+        List<Cube> cubes = new LinkedList<>();
 
-        var current = input.remove(0);
-        while (!current.x) current = input.remove(0);
-        wrappedSpace.add(current.y);
-        for (var command: input) {
-            // subtract
-            wrappedSpace = wrappedSpace.stream().map(rect -> rect.subtract(command.y))
-                    .filter(Optional::isPresent)
-                    .map(Optional::get)
-                    .flatMap(Collection::stream)
+        for (var command : input) {
+            cubes = Stream.concat(cubes.stream(),
+                            cubes.stream()
+                                    .map(cube -> cube.intersection(command.y))
+                                    .filter(Optional::isPresent)
+                                    .map(Optional::get))
                     .collect(Collectors.toList());
-            if(command.x){
-                wrappedSpace.add(current.y);
-            }
+            if (command.x)
+                cubes.add(command.y);
         }
 
-        return wrappedSpace.stream().mapToLong(F_Rectangle3D::wrappingIntegerCount).count();
+        return cubes.stream().mapToLong(Cube::getLength).sum();
     }
 
     public long getLightCountMultiThreadedBruteForce(int loadId) {

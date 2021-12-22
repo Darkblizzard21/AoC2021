@@ -10,7 +10,6 @@ public class F_Rectangle3D_Tests {
     public static void main(String[] args) {
         int failCount = 0;
         if (!TestFullImmersedSubtract()) failCount++;
-        if (!Test2()) failCount++;
 
         System.out.println("TEST: " + (failCount == 0 ? "SUCCEEDED" : "FAILED (with " + failCount + " tests failing)"));
     }
@@ -55,52 +54,6 @@ public class F_Rectangle3D_Tests {
         if (result.isEmpty())
             return false;
         var resultPresent = result.get();
-        for (int i = 0; i < resultPresent.size(); i++) {
-            var expectedExplicit = expected.get(i);
-            var resultExplicit = resultPresent.get(i);
-            if (!resultExplicit.equals(expectedExplicit))
-                return false;
-        }
-        return true;
-    }
-
-    public static boolean Test2() {
-        var outer = new F_Rectangle3D(0, 0, 0, 3, 3, 3);
-        var inner = new F_Rectangle3D(1, 1, 1, 4, 4, 4);
-
-        List<F_Rectangle3D> expected = new LinkedList<>();
-        expected.add(new F_Rectangle3D(0, 0, 0, 1, 1, 1));
-        expected.add(new F_Rectangle3D(1, 0, 0, 2, 1, 1));
-        expected.add(new F_Rectangle3D(2, 0, 0, 3, 1, 1));
-        expected.add(new F_Rectangle3D(0, 1, 0, 1, 2, 1));
-        expected.add(new F_Rectangle3D(1, 1, 0, 2, 2, 1));
-        expected.add(new F_Rectangle3D(2, 1, 0, 3, 2, 1));
-        expected.add(new F_Rectangle3D(0, 2, 0, 1, 3, 1));
-        expected.add(new F_Rectangle3D(1, 2, 0, 2, 3, 1));
-        expected.add(new F_Rectangle3D(2, 2, 0, 3, 3, 1));
-
-        expected.add(new F_Rectangle3D(0, 0, 1, 1, 1, 2));
-        expected.add(new F_Rectangle3D(1, 0, 1, 2, 1, 2));
-        expected.add(new F_Rectangle3D(2, 0, 1, 3, 1, 2));
-        expected.add(new F_Rectangle3D(0, 1, 1, 1, 2, 2));
-
-        expected.add(new F_Rectangle3D(0, 2, 1, 1, 3, 2));
-
-        expected.add(new F_Rectangle3D(0, 0, 2, 1, 1, 3));
-        expected.add(new F_Rectangle3D(1, 0, 2, 2, 1, 3));
-        expected.add(new F_Rectangle3D(2, 0, 2, 3, 1, 3));
-        expected.add(new F_Rectangle3D(0, 1, 2, 1, 2, 3));
-
-
-        expected.add(new F_Rectangle3D(0, 2, 2, 1, 3, 3));
-
-        expected = expected.stream().sorted().collect(Collectors.toList());
-
-        var result = outer.subtract(inner);
-
-        if (result.isEmpty())
-            return false;
-        var resultPresent = result.get().stream().sorted().collect(Collectors.toList());
         for (int i = 0; i < resultPresent.size(); i++) {
             var expectedExplicit = expected.get(i);
             var resultExplicit = resultPresent.get(i);

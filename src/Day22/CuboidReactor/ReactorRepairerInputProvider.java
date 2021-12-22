@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class ReactorRepairerInputProvider {
     protected List<Tuple<Boolean, Rectangle3D>> load(int loadId) {
         String toLoad;
-        if (loadId > 0 && loadId < 3) {
+        if (loadId > 0 && loadId < 4) {
             // 1 example for first task
             toLoad = "example" + loadId + ".txt";
         } else {

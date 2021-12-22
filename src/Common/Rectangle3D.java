@@ -36,6 +36,10 @@ public class Rectangle3D {
                 * (upperBound.z() - lowerBound.z() + 1);
     }
 
+    public Optional<Rectangle3D> tryToIntersect(Rectangle3D rect){
+        return overlaps(rect) ? Optional.of(intersection(rect)) : Optional.empty();
+    }
+
     public Rectangle3D intersection(Rectangle3D rect) {
         int xmin = Math.max(this.lowerBound.x(), rect.lowerBound.x());
         int xmax = Math.min(this.upperBound.x(), rect.upperBound.x());
