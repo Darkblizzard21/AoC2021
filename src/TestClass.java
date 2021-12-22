@@ -1,4 +1,6 @@
 import Common.CastTests;
+import Common.F_Rectangle3D;
+import Common.Float3;
 import Day01.DepthMeasurement.DepthSampler;
 import Day02.Movement.MovementController;
 import Day02.Movement.MovementInputSampler;
@@ -258,8 +260,9 @@ public class TestClass {
                 System.out.println("LightCount (input): " + rr.getLightCount(0,50));
 
                 System.out.println("\nPart 2: unbound");
-                System.out.println("LightCount (example1): " + rr.getLightCountMultiThreadedBruteForce(1) + "==39");
-                System.out.println("LightCount (input): " + rr.getLightCountMultiThreadedBruteForce(0));
+                System.out.println("LightCount (example1): " + rr.getLightCount(1) + "==39");
+                System.out.println("LightCount (example3): " + rr.getLightCount(3) + "==2758514936282235");
+                System.out.println("LightCount (input): " + rr.getLightCount(0));
                 break;
         }
     }

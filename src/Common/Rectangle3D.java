@@ -36,34 +36,6 @@ public class Rectangle3D {
                 * (upperBound.z() - lowerBound.z() + 1);
     }
 
-    public Optional<List<Rectangle3D>> subtract(Rectangle3D sub) {
-        if (!overlaps(sub)) return Optional.empty();
-        var intersection = intersection(sub);
-        var iLower = intersection.getLowerBound();
-        var iUpper = intersection.getUpperBound();
-
-        List<Rectangle3D> shards = new LinkedList<>();
-        //Lower Row front z-1;
-        var frontLeftLower = new Rectangle3D(lowerBound, iLower.withZ(iLower.z() - 1));
-        if (frontLeftLower.overlaps(this)) shards.add(frontLeftLower);
-
-        var frontMiddleLower = new Rectangle3D(
-                lowerBound.withX(iLower.x()),
-                new Int3(iUpper.x(), iLower.y(), iLower.z() - 1));
-        if (frontMiddleLower.overlaps(this)) shards.add(frontMiddleLower);
-
-        var frontRightLower = new Rectangle3D(
-                lowerBound.withX(iUpper.x()),
-                new Int3(upperBound.x(), iLower.y(), iLower.z() - 1));
-        if (frontRightLower.overlaps(this)) shards.add(frontRightLower);
-
-        //Lower Row middle
-        var middleLeftLower = new Rectangle3D(lowerBound.withZ(iLower.z()), iLower.withZ(upperBound.z()));
-        if (middleLeftLower.overlaps(this)) shards.add(middleLeftLower);
-
-        throw new IllegalStateException();
-    }
-
     public Rectangle3D intersection(Rectangle3D rect) {
         int xmin = Math.max(this.lowerBound.x(), rect.lowerBound.x());
         int xmax = Math.min(this.upperBound.x(), rect.upperBound.x());

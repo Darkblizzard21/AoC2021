@@ -1,12 +1,16 @@
 package Day22.CuboidReactor;
 
+import Common.F_Rectangle3D;
 import Common.Int3;
 import Common.Rectangle3D;
 import Common.Tuple;
 import Day22.CuboidReactor.BitArrays.BitArray3D;
 import Day22.CuboidReactor.BitArrays.BitRectangle3D;
 
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.Collectors;
@@ -16,6 +20,30 @@ public class ReactorRepairer extends ReactorRepairerInputProvider {
 
     public long getLightCount(int loadId, int bound) {
         return calculateShard(new Rectangle3D(new Int3(-bound), new Int3(bound)), load(loadId));
+    }
+
+    public long getLightCount(int loadId) {
+        var input = load(loadId).stream()
+                .map(t -> new Tuple<>(t.x, F_Rectangle3D.wrap(t.y)))
+                .collect(Collectors.toList());
+        List<F_Rectangle3D> wrappedSpace = new LinkedList<>();
+
+        var current = input.remove(0);
+        while (!current.x) current = input.remove(0);
+        wrappedSpace.add(current.y);
+        for (var command: input) {
+            // subtract
+            wrappedSpace = wrappedSpace.stream().map(rect -> rect.subtract(command.y))
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .flatMap(Collection::stream)
+                    .collect(Collectors.toList());
+            if(command.x){
+                wrappedSpace.add(current.y);
+            }
+        }
+
+        return wrappedSpace.stream().mapToLong(F_Rectangle3D::wrappingIntegerCount).count();
     }
 
     public long getLightCountMultiThreadedBruteForce(int loadId) {
@@ -60,7 +88,7 @@ public class ReactorRepairer extends ReactorRepairerInputProvider {
                 .collect(Collectors.toList());
         if (input.size() <= 0)
             return 0;
-        if(!containsAddCommands(input))
+        if (!containsAddCommands(input))
             return 0;
 
         if (allMemoryMB > MAX_MEMORY_MB) {
@@ -94,9 +122,9 @@ public class ReactorRepairer extends ReactorRepairerInputProvider {
         }
     }
 
-    private boolean containsAddCommands(List<Tuple<Boolean, Rectangle3D>> commands){
-        for (var command: commands) {
-           if(command.x) return true;
+    private boolean containsAddCommands(List<Tuple<Boolean, Rectangle3D>> commands) {
+        for (var command : commands) {
+            if (command.x) return true;
         }
         return false;
     }
