@@ -26,7 +26,7 @@ import Day20.ImageGeneration.InfiniteImage;
 import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
-import Day23.AnimalSort.AnimalSorter;
+import Day23_WIP.AnimalSort.AnimalSorter;
 
 public class TestClass {
     public static void main(String[] args) {
@@ -265,7 +265,7 @@ public class TestClass {
                 break;
             case 23:
                 AnimalSorter as = new AnimalSorter();
-                System.out.println(as.solveFirstHardCoded());
+                System.out.println(as.MinSortPoints_BruteForce(1));
                 break;
         }
     }
