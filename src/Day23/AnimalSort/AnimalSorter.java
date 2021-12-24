@@ -1,64 +1,60 @@
 package Day23.AnimalSort;
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class AnimalSorter extends AnimalSorterInputProvider {
     public int MinSortPoints(int loadId) {
-        CaveState startState = new CaveState(load(loadId));
-
-        startState.visualize();
-
-        startState.evaluateBoardState();
-        var nextState = startState.getPossibleStates().stream().min(Comparator.comparingLong(CaveState::evaluateBoardState)).get();
-
-        nextState.visualize();
-
-        var allStates = nextState.getPossibleStates().stream().sorted(Comparator.comparingLong(CaveState::evaluateBoardState)).collect(Collectors.toList());
-        int i= 0;
-        for (var caveState: allStates) {
-            System.out.println("\n" + (i++));
-            System.out.println("CurrentCost: " + caveState.getCost());
-            System.out.println("MinRemainingCost: " + caveState.minimalRemainingCost());
-            System.out.println("Evaluated: " + caveState.evaluateBoardState());
-            caveState.visualize();
-        }
-
-        var bestState = MinSortPoints(startState, Integer.MAX_VALUE);
-
-        return bestState.get().getCost();
+        var pods = new PodState(loadAsArray(loadId));
+        int cost = 0;
+        return 0;
     }
 
-    private Optional<CaveState> MinSortPoints(CaveState currentState, final int BestSolution) {
-        if (currentState.getCost() > BestSolution)
-            return Optional.empty();
+    public int solveExampleHardCoded(){
+        var pods = new PodState(loadAsArray(1));
 
-        CaveState bestState = null;
-        int localBest = BestSolution;
-        var allStates = currentState.getPossibleStates().stream()
-                .sorted(Comparator.comparingLong(CaveState::evaluateBoardState))
-                .limit(3)
-                .collect(Collectors.toList());
-        System.out.println("{");
-        for (var state : allStates) {
-            System.out.println("\nCurrentCost: " + state.getCost());
-            System.out.println("MinRemainingCost: " + state.minimalRemainingCost());
-            System.out.println("Evaluated: " + state.evaluateBoardState());
-            state.visualize();
-            var resOpt = MinSortPoints(state, localBest);
-            if (resOpt.isPresent()) {
-                var res = resOpt.get();
-                if (res.getCost() < localBest) {
-                    bestState = res;
-                    localBest = res.getCost();
-                }
-            }
-        }
-        System.out.println("}");
-        if (localBest < BestSolution) {
-            return Optional.of(bestState);
-        } else {
-            return Optional.empty();
-        }
+        pods.move(6,0,3,0);
+
+        pods.move(4,0,6,0);
+
+        pods.move(4,1,5,0);
+        pods.move(3,0,4,1);
+
+        pods.move(2,0,4,0);
+
+        pods.move(8,0,7,0);
+        pods.move(8,1,9,0);
+
+        pods.move(7,0,8,1);
+        pods.move(5,0,8,0);
+
+        pods.move(9,0,2,0);
+        return pods.cost;
+    }
+
+    public int solveFirstHardCoded(){
+        var pods = new PodState(loadAsArray(0));
+
+        pods.move(8,0,10,0);
+        pods.move(8,1,9,0);
+        pods.print();
+
+        pods.move(2,0,8,1);
+        pods.move(4,0,8,0);
+        pods.print();
+
+        pods.move(4,1,1,0);
+        pods.print();
+
+        pods.move(6,0,4,1);
+        pods.move(6,1,4,0);
+        pods.print();
+
+        pods.move(2,1,6,1);
+        pods.move(9,0,6,0);
+        pods.print();
+
+        pods.move(1,0,2,1);
+        pods.move(10,0,2,0);
+        pods.print();
+
+        return pods.cost;
     }
 }
