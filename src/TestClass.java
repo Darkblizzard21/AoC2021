@@ -1,6 +1,4 @@
 import Common.CastTests;
-import Common.F_Rectangle3D;
-import Common.Float3;
 import Day01.DepthMeasurement.DepthSampler;
 import Day02.Movement.MovementController;
 import Day02.Movement.MovementInputSampler;
@@ -28,10 +26,11 @@ import Day20.ImageGeneration.InfiniteImage;
 import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
+import Day23.AnimalSort.AnimalSorter;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 22;
+        int day = 23;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -263,6 +262,10 @@ public class TestClass {
                 System.out.println("LightCount (example1): " + rr.getLightCount(1) + "==39");
                 System.out.println("LightCount (example3): " + rr.getLightCount(3) + "==2758514936282235");
                 System.out.println("LightCount (input): " + rr.getLightCount(0));
+                break;
+            case 23:
+                AnimalSorter as = new AnimalSorter();
+                System.out.println(as.MinSortPoints(1));
                 break;
         }
     }

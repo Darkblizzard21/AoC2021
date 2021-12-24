@@ -3,6 +3,9 @@ package Common;
 import java.util.Arrays;
 
 public class Int3 {
+    public static final Int3 yPositive = new Int3(0,1,0);
+    public static final Int3 xPositive = new Int3(1,0,0);
+    public static final Int3 xNegative = new Int3(-1,0,0);
     private int[] xyz = new int[3];
 
     public Int3(String str) {
@@ -39,18 +42,6 @@ public class Int3 {
 
     public int z() {
         return xyz[2];
-    }
-
-    public void setX(int x) {
-        xyz[0] = x;
-    }
-
-    public void setY(int y) {
-        xyz[1] = y;
-    }
-
-    public void setZ(int z) {
-        xyz[2] = z;
     }
 
     public Int3 withX(int x) {

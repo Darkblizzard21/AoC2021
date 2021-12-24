@@ -66,39 +66,39 @@ public class Scanner {
         return new Int3(position);
     }
 
-    public Int3 getAlignedPosition() {
-        return isAligned() ? alignedTo.getAlignedPosition().add(position) : new Int3(position);
-    }
-
     public void setPosition(Int3 position) {
         this.position = position;
+    }
+
+    public Int3 getAlignedPosition() {
+        return isAligned() ? alignedTo.getAlignedPosition().add(position) : new Int3(position);
     }
 
     public Int3 getRotation() {
         return new Int3(rotation);
     }
 
-    public boolean isAligned(){
+    public boolean isAligned() {
         return alignedTo != null;
     }
 
-    public Scanner getAlignedTo(){
+    public Scanner getAlignedTo() {
         return alignedTo;
     }
 
     public void rotateX90() {
         relativeBeacons = relativeBeacons.stream().map(Int3::rotX90).collect(Collectors.toList());
-        rotation.setX((rotation.x() + 90) % 360);
+        rotation = rotation.withX((rotation.x() + 90) % 360);
     }
 
     public void rotateY90() {
         relativeBeacons = relativeBeacons.stream().map(Int3::rotY90).collect(Collectors.toList());
-        rotation.setY((rotation.y() + 90) % 360);
+        rotation = rotation.withY((rotation.y() + 90) % 360);
     }
 
     public void rotateZ90() {
         relativeBeacons = relativeBeacons.stream().map(Int3::rotZ90).collect(Collectors.toList());
-        rotation.setZ((rotation.z() + 90) % 360);
+        rotation = rotation.withZ((rotation.z() + 90) % 360);
     }
 
     @Override
