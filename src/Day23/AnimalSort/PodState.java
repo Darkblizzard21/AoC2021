@@ -14,7 +14,23 @@ public class PodState {
         cost = 0;
     }
 
+    private static char toChar(int i) {
+        switch (i) {
+            case 1:
+                return 'A';
+            case 10:
+                return 'B';
+            case 100:
+                return 'C';
+            case 1000:
+                return 'D';
+            default:
+                throw new IllegalArgumentException("ARRRRRRRRRRG!");
+        }
+    }
+
     public boolean canMove(int fromX, int fromY, int toX, int toY) {
+        if (pods[fromX][fromY] == 0) return false;
         if (fromY != 0 && pods[fromX][fromY - 1] != 0) return false; //check if something is above
         if (pods[toX][toY] != 0) return false; //check if target is blocked
 
@@ -89,20 +105,5 @@ public class PodState {
         }
         System.out.println("  ");
         System.out.println("  #########  ");
-    }
-
-    private static char toChar(int i){
-        switch (i) {
-            case 1:
-                return 'A';
-            case 10:
-                return 'B';
-            case 100:
-                return 'C';
-            case 1000:
-                return 'D';
-            default:
-                throw new IllegalArgumentException("ARRRRRRRRRRG!");
-        }
     }
 }

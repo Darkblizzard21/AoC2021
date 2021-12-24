@@ -33,23 +33,22 @@ public class AnimalSorter extends AnimalSorterInputProvider {
         var pods = new PodState(loadAsArray(0));
 
         pods.move(8,0,10,0);
-        pods.move(8,1,9,0);
-        pods.print();
+        pods.move(6,0,9,0);
 
-        pods.move(2,0,8,1);
-        pods.move(4,0,8,0);
-        pods.print();
+        pods.move(6,1,5,0);
+        pods.move(8,1,6,1);
+
+        pods.move(5,0,6,0);
+
+        pods.move(4,0,8,1);
+        pods.move(2,0,8,0);
 
         pods.move(4,1,1,0);
-        pods.print();
 
-        pods.move(6,0,4,1);
-        pods.move(6,1,4,0);
-        pods.print();
+        pods.move(9,0,4,1);
+        pods.move(6,0,4,0);
 
-        pods.move(2,1,6,1);
-        pods.move(9,0,6,0);
-        pods.print();
+        pods.move(2,1,6,0);
 
         pods.move(1,0,2,1);
         pods.move(10,0,2,0);

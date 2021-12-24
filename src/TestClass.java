@@ -265,7 +265,7 @@ public class TestClass {
                 break;
             case 23:
                 AnimalSorter as = new AnimalSorter();
-                System.out.println(as.MinSortPoints(1));
+                System.out.println(as.solveFirstHardCoded());
                 break;
         }
     }
