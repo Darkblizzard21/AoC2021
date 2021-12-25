@@ -2,8 +2,10 @@ package Day23_WIP.AnimalSort;
 
 import Common.Tuple;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class PodStateUnmutable {
     public final int[][] pods;
@@ -48,13 +50,22 @@ public class PodStateUnmutable {
         }
     }
 
+    public boolean canMoveAtAll(int x, int y){
+        if(y == 0) return true;
+        return pods[x][y-1]==0;
+
+    }
+
     public boolean canMove(int fromX, int toX) {
-        if(firstEmptySlot(toX) == -1) return false;
+        if (firstEmptySlot(toX) == -1) return false;
         return canMove(fromX, firstEmptySlot(fromX) + 1, toX, firstEmptySlot(toX));
     }
 
     public boolean canMove(int fromX, int fromY, int toX, int toY) {
+        if (fromX == toX) return false; // can't move to same x
         if (pods[fromX][fromY] == 0) return false;
+        if ((pods[toX].length > toY + 1) && (toX % 2 == 0 && toX != 0 && toX != 10) && (pods[toX][toY + 1] == 0))
+            return false; // check that target not in thin air
         if (fromY != 0 && pods[fromX][fromY - 1] != 0) return false; //check if something is above
         if (pods[toX][toY] != 0) return false; //check if target is blocked
 
@@ -112,12 +123,44 @@ public class PodStateUnmutable {
                 && pods[8][0] == 1000 && pods[8][1] == 1000;
     }
 
-    public int minRestCost(){
+    public boolean isSolved(int x, int y) {
+        if (x % 2 != 0 || x == 0 || x == 10) return false;
+        if (targetX(x, y) != x) return false;
+        if (!(y + 1 < pods[x].length)) return true;
+        for (int i = y + 1; i < pods[x].length; i++) {
+            if (pods[x][y] != pods[x][i])
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isBlockingMove(int fromX, int toX) {
+        return isBlockingMove(fromX, firstEmptySlot(fromX) + 1, toX, firstEmptySlot(toX));
+
+    }
+
+    public boolean isBlockingMove(int fromX, int fromY, int toX, int toY) {
+        if (toX < 2 || toX > 8) return false;
+
+        int targetX = targetX(fromX, fromY);
+
+        if(targetX < toX)
+
+        for (int y = 0; y < pods[targetX].length; y++) {
+            if (pods[targetX][y] == 0) continue;
+            var otherTargetX = targetX(targetX, y);
+            if (toX < otherTargetX)
+                return true;
+        }
+        return false;
+    }
+
+    public int minRestCost() {
         return getAllLocations().stream().mapToInt(
                 t -> {
                     int fromX = t.x;
                     int fromY = t.y;
-                    int toX = targetX(fromX,fromY);
+                    int toX = targetX(fromX, fromY);
                     int moveCost = Math.abs(toX - fromX) + fromY + fromY;
 
                     if (fromX % 2 == 0 && fromX != 0 && fromX != 10)
@@ -164,5 +207,20 @@ public class PodStateUnmutable {
         }
         System.out.println("  ");
         System.out.println("  #########  ");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PodStateUnmutable that = (PodStateUnmutable) o;
+        return cost == that.cost && Arrays.deepEquals(pods, that.pods);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(cost);
+        result = 31 * result + Arrays.deepHashCode(pods);
+        return result;
     }
 }

@@ -28,12 +28,11 @@ import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
 import Day23_WIP.AnimalSort.AnimalSorter;
 import Day24_WIP.ALU.ALU_TestingUnit;
-import Day25.SeaCucumberCurrents.SeaCucumberLayer;
 import Day25.SeaCucumberCurrents.SeaCucumberShepard;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 25;
+        int day = 23;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -268,7 +267,8 @@ public class TestClass {
                 break;
             case 23:
                 AnimalSorter as = new AnimalSorter();
-                System.out.println(as.MinSortPoints_BruteForce(1));
+                System.out.println("Min Solve Points (example1):" + as.MinSortPoints_BruteForce(1) +"==12521");
+                System.out.println("Min Solve Points (input):" + as.MinSortPoints_BruteForce(0));
                 break;
             case 24:
                 ALU_TestingUnit alu = new ALU_TestingUnit();
@@ -279,6 +279,8 @@ public class TestClass {
                 System.out.println("Part 1:");
                 System.out.println("Steps to hold (example1): " + scs.stepsToHold(1) + "==58");
                 System.out.println("Steps to hold (input): " + scs.stepsToHold(0));
+
+                System.out.println("Part 2: Fully solve all previous days!");
                 break;
         }
     }
