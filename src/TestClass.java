@@ -27,10 +27,13 @@ import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
 import Day23_WIP.AnimalSort.AnimalSorter;
+import Day24_WIP.ALU.ALU_TestingUnit;
+import Day25.SeaCucumberCurrents.SeaCucumberLayer;
+import Day25.SeaCucumberCurrents.SeaCucumberShepard;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 23;
+        int day = 25;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -266,6 +269,16 @@ public class TestClass {
             case 23:
                 AnimalSorter as = new AnimalSorter();
                 System.out.println(as.MinSortPoints_BruteForce(1));
+                break;
+            case 24:
+                ALU_TestingUnit alu = new ALU_TestingUnit();
+                System.out.println(alu.findLargestNumber(0));
+                break;
+            case 25:
+                SeaCucumberShepard scs = new SeaCucumberShepard();
+                System.out.println("Part 1:");
+                System.out.println("Steps to hold (example1): " + scs.stepsToHold(1) + "==58");
+                System.out.println("Steps to hold (input): " + scs.stepsToHold(0));
                 break;
         }
     }
