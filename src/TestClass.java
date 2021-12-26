@@ -26,7 +26,7 @@ import Day20.ImageGeneration.InfiniteImage;
 import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
-import Day23_WIP.AnimalSort.AnimalSorter;
+import Day23.AnimalSort.AnimalSorter;
 import Day24_WIP.ALU.ALU_TestingUnit;
 import Day25.SeaCucumberCurrents.SeaCucumberShepard;
 
@@ -267,8 +267,13 @@ public class TestClass {
                 break;
             case 23:
                 AnimalSorter as = new AnimalSorter();
-                System.out.println("Min Solve Points (example1):" + as.MinSortPoints_BruteForce(1) +"==12521");
-                System.out.println("Min Solve Points (input):" + as.MinSortPoints_BruteForce(0));
+                System.out.println("Part 1:");
+                System.out.println("Min Solve Points (example1): " + as.MinSortPoints(1) +"==12521");
+                System.out.println("Min Solve Points (input): " + as.MinSortPoints(0));
+
+                System.out.println("Part 1: Move Input!");
+                System.out.println("Min Solve Points (example1): " + as.MinSortPoints_Full(1) +"==44169");
+                System.out.println("Min Solve Points (input): " + as.MinSortPoints_Full(0));
                 break;
             case 24:
                 ALU_TestingUnit alu = new ALU_TestingUnit();

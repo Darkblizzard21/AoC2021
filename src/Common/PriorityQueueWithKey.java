@@ -32,6 +32,13 @@ public class PriorityQueueWithKey<E> {
         return x.y;
     }
 
+    public Tuple<Integer, E> pollWithKey() {
+        var x = queue.poll();
+        if (x == null) return null;
+        map.remove(x.y);
+        return x;
+    }
+
     public int currentPriority(E in) {
         return map.containsKey(in) ? map.get(in).x : -1;
     }

@@ -1,4 +1,4 @@
-package Day23_WIP.AnimalSort;
+package Day23.AnimalSort;
 
 import java.io.IOException;
 import java.net.URL;

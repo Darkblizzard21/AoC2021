@@ -17,7 +17,7 @@ public class Pathfinder extends PathfinderInputProvider {
     }
 
     private int minimalPathRisk(DoubleLinkedVertex<Integer> start, DoubleLinkedVertex<Integer> end) {
-        var metaData = new DijkstraMetaData();
+        var metaData = new DijkstraMetaData<DoubleLinkedVertex<Integer>>();
         PriorityQueueWithKey<DoubleLinkedVertex<Integer>> queue = new PriorityQueueWithKey<>();
 
         metaData.setData(start,0,null);
