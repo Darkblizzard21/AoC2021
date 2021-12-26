@@ -1,25 +1,41 @@
 package Day23.AnimalSort;
 
 import Common.PriorityQueueWithKey;
+import Common.Tuple;
+import Day23.AnimalSort.gifs.StateVisualizer;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class AnimalSorter extends AnimalSorterInputProvider {
 
     public int MinSortPoints(int loadId) {
         var start = new State(loadAsArray(loadId));
-        return AStarSolve(start);
+        return AStarSolve(start).x;
+    }
+
+    public List<State> MinSortPoints_AsTraceback(int loadId) {
+        var start = new State(loadAsArray(loadId));
+        return AStarSolve(start).y;
     }
 
     public int MinSortPoints_Full(int loadId) {
         var start = new State(toFullInput(loadAsArray(loadId)));
-        return AStarSolve(start);
+        return AStarSolve(start).x;
+    }
+
+    public List<State> MinSortPoints_Full_AsTraceback(int loadId) {
+        var start = new State(toFullInput(loadAsArray(loadId)));
+        return AStarSolve(start).y;
     }
 
 
-    private int AStarSolve(State start){
-        PriorityQueueWithKey<State> fScoreQueue = new PriorityQueueWithKey<>();
+
+    private Tuple<Integer,List<State>> AStarSolve(State start){
+        PriorityQueueWithKey<State> fScoreQueue;
+        fScoreQueue = new PriorityQueueWithKey<>();
         fScoreQueue.set(start.minmalRestCost(), start);
 
         Map<State, Integer> gScore = new HashMap<>();
@@ -37,7 +53,7 @@ public class AnimalSorter extends AnimalSorterInputProvider {
 
             if (current.isSolved()) {
                 printSolve(current, cameFrom);
-                return gScore.get(current);
+                return new Tuple<>(gScore.get(current),traceForward(current,cameFrom, new LinkedList<>()));
             }
 
             for (var t : current.allReachableStates()) {
@@ -59,6 +75,14 @@ public class AnimalSorter extends AnimalSorterInputProvider {
         if (cameFrom.containsKey(current))
             printSolve(cameFrom.get(current), cameFrom);
         current.print();
+    }
+
+
+    private List<State> traceForward(State current, Map<State, State> cameFrom, List<State> list) {
+        if (cameFrom.containsKey(current))
+            traceForward(cameFrom.get(current), cameFrom, list);
+        list.add(current);
+        return list;
     }
 
     private int[][] toFullInput(int[][] in){

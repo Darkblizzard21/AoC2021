@@ -256,9 +256,9 @@ public class TestClass {
             case 22:
                 ReactorRepairer rr = new ReactorRepairer();
                 System.out.println("Part 1: in50");
-                System.out.println("LightCount (example1): " + rr.getLightCount(1,50) + "==39");
-                System.out.println("LightCount (example2): " + rr.getLightCount(2,50) + "==590784");
-                System.out.println("LightCount (input): " + rr.getLightCount(0,50));
+                System.out.println("LightCount (example1): " + rr.getLightCount(1, 50) + "==39");
+                System.out.println("LightCount (example2): " + rr.getLightCount(2, 50) + "==590784");
+                System.out.println("LightCount (input): " + rr.getLightCount(0, 50));
 
                 System.out.println("\nPart 2: unbound");
                 System.out.println("LightCount (example1): " + rr.getLightCount(1) + "==39");
@@ -267,12 +267,18 @@ public class TestClass {
                 break;
             case 23:
                 AnimalSorter as = new AnimalSorter();
+                /*
+                StateVisualizer.visualize(as.MinSortPoints_AsTraceback(1), "example");
+                StateVisualizer.visualize(as.MinSortPoints_AsTraceback(0), "input");
+                StateVisualizer.visualize(as.MinSortPoints_Full_AsTraceback(1),"exampleFull");
+                StateVisualizer.visualize(as.MinSortPoints_Full_AsTraceback(0), "inputFull");
+                 */
                 System.out.println("Part 1:");
-                System.out.println("Min Solve Points (example1): " + as.MinSortPoints(1) +"==12521");
+                System.out.println("Min Solve Points (example1): " + as.MinSortPoints(1) + "==12521");
                 System.out.println("Min Solve Points (input): " + as.MinSortPoints(0));
 
                 System.out.println("Part 1: Move Input!");
-                System.out.println("Min Solve Points (example1): " + as.MinSortPoints_Full(1) +"==44169");
+                System.out.println("Min Solve Points (example1): " + as.MinSortPoints_Full(1) + "==44169");
                 System.out.println("Min Solve Points (input): " + as.MinSortPoints_Full(0));
                 break;
             case 24:
