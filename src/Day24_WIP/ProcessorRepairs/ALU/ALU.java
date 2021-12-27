@@ -1,7 +1,7 @@
-package Day24_WIP.ALU;
+package Day24_WIP.ProcessorRepairs.ALU;
 
-import Day24_WIP.ALU.Exeptions.InvalidMemmoryAddressExeption;
-import Day24_WIP.ALU.Exeptions.UnsupportedInstructionExeption;
+import Day24_WIP.ProcessorRepairs.ALU.Exeptions.InvalidMemmoryAddressExeption;
+import Day24_WIP.ProcessorRepairs.ALU.Exeptions.UnsupportedInstructionExeption;
 
 import java.util.List;
 
@@ -14,17 +14,21 @@ public class ALU {
     private Int w;
 
     public void run(List<String> program, String input) {
+        run(program, input, 0, 0, 0, 0);
+    }
+
+    public void run(List<String> program, String input, int w, int x, int y, int z) {
         nextInput = 0;
-        w = new Int(0);
-        x = new Int(0);
-        y = new Int(0);
-        z = new Int(0);
+        this.w = new Int(w);
+        this.x = new Int(x);
+        this.y = new Int(z);
+        this.z = new Int(z);
         this.input = input;
 
-        for (var command: program) {
+        for (var command : program) {
             interprete(command);
         }
-        System.out.println("fin\nw: " +w.value+ "\nx: " +x.value +"\ny: "  +y.value +"\nz: " +z.value);
+        System.out.println("fin\nw: " + this.w.value + "\nx: " + this.x.value + "\ny: " + this.y.value + "\nz: " + this.z.value);
     }
 
     private void interprete(String instruction) {
@@ -34,19 +38,19 @@ public class ALU {
                 invoke_inp(argmuents[1].charAt(0));
                 break;
             case "add":
-                invoke_add(argmuents[1].charAt(0),argmuents[2]);
+                invoke_add(argmuents[1].charAt(0), argmuents[2]);
                 break;
             case "mul":
-                invoke_mul(argmuents[1].charAt(0),argmuents[2]);
+                invoke_mul(argmuents[1].charAt(0), argmuents[2]);
                 break;
             case "div":
-                invoke_div(argmuents[1].charAt(0),argmuents[2]);
+                invoke_div(argmuents[1].charAt(0), argmuents[2]);
                 break;
             case "mod":
-                invoke_mod(argmuents[1].charAt(0),argmuents[2]);
+                invoke_mod(argmuents[1].charAt(0), argmuents[2]);
                 break;
             case "eql":
-                invoke_eql(argmuents[1].charAt(0),argmuents[2]);
+                invoke_eql(argmuents[1].charAt(0), argmuents[2]);
                 break;
             case "zro":
                 invoke_zro(argmuents[1].charAt(0));
@@ -57,48 +61,49 @@ public class ALU {
     }
 
     private void invoke_inp(char a) {
-       Int save = getFromChar_Ref(a);
-       save.value = input.charAt(nextInput++) - 48;
+        Int save = getFromChar_Ref(a);
+        save.value = input.charAt(nextInput++) - 48;
     }
 
-    private void invoke_add(char a, String b){
+    private void invoke_add(char a, String b) {
         Int save = getFromChar_Ref(a);
         int add = getFromChar_Value(b);
         save.value = save.value + add;
     }
 
-    private void invoke_mul(char a, String b){
+    private void invoke_mul(char a, String b) {
         Int save = getFromChar_Ref(a);
         int mul = getFromChar_Value(b);
         save.value = save.value * mul;
     }
 
-    private void invoke_div(char a, String b){
+    private void invoke_div(char a, String b) {
         Int save = getFromChar_Ref(a);
         int div = getFromChar_Value(b);
         save.value = save.value / div;
     }
 
-    private void invoke_mod(char a, String b){
+    private void invoke_mod(char a, String b) {
         Int save = getFromChar_Ref(a);
         int mod = getFromChar_Value(b);
         save.value = save.value % mod;
     }
-    private void invoke_eql(char a, String b){
+
+    private void invoke_eql(char a, String b) {
         Int save = getFromChar_Ref(a);
         int eql = getFromChar_Value(b);
         save.value = save.value == eql ? 1 : 0;
     }
 
-    private void invoke_zro(char a){
+    private void invoke_zro(char a) {
         Int save = getFromChar_Ref(a);
         save.value = 0;
     }
 
-    private Int getFromChar_Ref(char c){
+    private Int getFromChar_Ref(char c) {
         switch (c) {
             case 'x':
-               return x;
+                return x;
             case 'y':
                 return y;
             case 'z':
@@ -110,7 +115,7 @@ public class ALU {
         }
     }
 
-    private int getFromChar_Value(String c){
+    private int getFromChar_Value(String c) {
         switch (c) {
             case "x":
                 return x.value;

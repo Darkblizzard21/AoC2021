@@ -1,4 +1,4 @@
-package Day24_WIP.ALU;
+package Day24_WIP.ProcessorRepairs.ALU;
 
 import java.util.List;
 

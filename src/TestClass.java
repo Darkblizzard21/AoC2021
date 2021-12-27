@@ -27,12 +27,12 @@ import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
 import Day23.AnimalSort.AnimalSorter;
-import Day24_WIP.ALU.ALU_TestingUnit;
+import Day24_WIP.ProcessorRepairs.ALU_TestingUnit;
 import Day25.SeaCucumberCurrents.SeaCucumberShepard;
 
 public class TestClass {
     public static void main(String[] args) {
-        int day = 23;
+        int day = 24;
         if (args.length > 0 && CastTests.isNumeric(args[0])) {
             day = Integer.parseInt(args[0]);
         }
@@ -283,7 +283,8 @@ public class TestClass {
                 break;
             case 24:
                 ALU_TestingUnit alu = new ALU_TestingUnit();
-                System.out.println(alu.findLargestNumber(0));
+                System.out.println("Biggest Number: " + alu.findLargestNumber());
+                System.out.println("Smallest Number: " + alu.findSmallestNumber());
                 break;
             case 25:
                 SeaCucumberShepard scs = new SeaCucumberShepard();
