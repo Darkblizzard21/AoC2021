@@ -1,9 +1,9 @@
-package Day24_WIP.ProcessorRepairs;
+package Day24.ProcessorRepairs;
 
-import Day24_WIP.ProcessorRepairs.ALU.ALU;
-import Day24_WIP.ProcessorRepairs.ProgrammParts.DividingPart;
-import Day24_WIP.ProcessorRepairs.ProgrammParts.MultiplingPart;
-import Day24_WIP.ProcessorRepairs.ProgrammParts.ProgrammPart;
+import Day24.ProcessorRepairs.ALU.ALU;
+import Day24.ProcessorRepairs.ProgrammParts.DividingPart;
+import Day24.ProcessorRepairs.ProgrammParts.MultiplingPart;
+import Day24.ProcessorRepairs.ProgrammParts.ProgrammPart;
 
 import java.util.LinkedList;
 import java.util.List;

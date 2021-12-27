@@ -1,4 +1,4 @@
-package Day24_WIP.ProcessorRepairs;
+package Day24.ProcessorRepairs;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package Day24_WIP.ProcessorRepairs.ALU;
+package Day24.ProcessorRepairs.ALU;
 
 import java.util.Objects;
 

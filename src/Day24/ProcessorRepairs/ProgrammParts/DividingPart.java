@@ -1,4 +1,4 @@
-package Day24_WIP.ProcessorRepairs.ProgrammParts;
+package Day24.ProcessorRepairs.ProgrammParts;
 
 public class DividingPart implements ProgrammPart {
     private final int offset;

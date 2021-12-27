@@ -27,7 +27,7 @@ import Day21.DiracDice.Dice.Dice100;
 import Day21.DiracDice.GameSimulator;
 import Day22.CuboidReactor.ReactorRepairer;
 import Day23.AnimalSort.AnimalSorter;
-import Day24_WIP.ProcessorRepairs.ALU_TestingUnit;
+import Day24.ProcessorRepairs.ALU_TestingUnit;
 import Day25.SeaCucumberCurrents.SeaCucumberShepard;
 
 public class TestClass {

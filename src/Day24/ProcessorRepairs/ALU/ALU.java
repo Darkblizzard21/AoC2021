@@ -1,7 +1,7 @@
-package Day24_WIP.ProcessorRepairs.ALU;
+package Day24.ProcessorRepairs.ALU;
 
-import Day24_WIP.ProcessorRepairs.ALU.Exeptions.InvalidMemmoryAddressExeption;
-import Day24_WIP.ProcessorRepairs.ALU.Exeptions.UnsupportedInstructionExeption;
+import Day24.ProcessorRepairs.ALU.Exeptions.InvalidMemmoryAddressExeption;
+import Day24.ProcessorRepairs.ALU.Exeptions.UnsupportedInstructionExeption;
 
 import java.util.List;
 

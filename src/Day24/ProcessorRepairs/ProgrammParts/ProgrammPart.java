@@ -1,4 +1,4 @@
-package Day24_WIP.ProcessorRepairs.ProgrammParts;
+package Day24.ProcessorRepairs.ProgrammParts;
 
 public interface ProgrammPart {
     int evauluate(int inp, int z);
